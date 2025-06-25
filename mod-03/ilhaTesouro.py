@@ -40,7 +40,7 @@ if escolha1 == "esquerda":
         escolha3 = str(input("Você encontra uma parede de pedra com três portas," \
         " uma vermelha reluzente e chamativa," \
         " uma amarela e pouco brilhosa e uma azul e bela." \
-        "\n\nPara onde você quer ir? Digite (vermelho) ou (amarelo) ou (azul): ")).lower
+        "\n\nPara onde você quer ir? Digite (vermelho) ou (amarelo) ou (azul): ")).lower()
         
         if escolha3 == "amarela":
             print("Atravessando a porta simples, você escontra o ouro e a riqueza que tanto desejava. VItória!")
