@@ -1,0 +1,16 @@
+word_list = ['celular', 'casa', 'computador']
+
+import random as r 
+palavra_escolhida = r.choice(word_list)
+
+contagem = len(palavra_escolhida)
+
+print(contagem * '_')
+
+adivinha = input('Adivinhe um letra: ').lower()
+
+for letra in palavra_escolhida:
+    if letra == adivinha:
+        print('O')
+    else:
+        print('X')

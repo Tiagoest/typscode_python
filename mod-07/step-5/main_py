@@ -1,0 +1,57 @@
+import random as r
+from forca_palavras import word_list
+from forca_artes import estagios, logo
+
+print(logo)
+
+vidas = 6
+
+palavra_escolhida = r.choice(word_list)
+
+placeholder = ''
+contagem = len(palavra_escolhida)
+for posicao in range(contagem):
+    placeholder += '_'
+print(f'---->{placeholder}')
+
+game_over = False
+correct_letter = []
+
+while not game_over:
+    
+    print(8 * '=-', f'{vidas}/6 Vidas', 8 * '-=')
+
+    adivinha = input('Adivinhe um letra: ').lower()
+
+    if adivinha in correct_letter:
+        print(f'Você já adivinhou a letra {adivinha}')
+
+    display = ''
+
+    for letra in palavra_escolhida:
+        
+        if letra == adivinha:
+            display += letra
+            correct_letter.append(letra)
+            
+        elif letra in correct_letter:
+            display += letra
+
+        else:
+            display += '_'
+
+    print(display)
+
+    if adivinha not in palavra_escolhida:
+        vidas -= 1
+        print(f'Você adivinhou {adivinha}, Essa letra não está na palavra. Você perderá uma vida')
+
+        if vidas == 0:
+            game_over = True
+            print(8 * '=-', f'A palavra era {palavra_escolhida}. Você perdeu!', 8 * '-=')
+
+    if '_' not in display:
+        game_over = True
+        print('Você venceu!')
+
+    print(estagios[vidas])

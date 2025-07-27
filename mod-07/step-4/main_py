@@ -1,0 +1,107 @@
+import random as r
+
+word_list = ['celular', 'casa', 'computador']
+estagios = ['''
+  _______
+ |/      |
+ |       O
+ |      /|\\
+ |      / \\
+ |          
+_|_
+''', '''
+  _______
+ |/      |
+ |       O
+ |      /|\\
+ |      / 
+ |          
+_|_
+''', '''
+  _______
+ |/      |
+ |       O
+ |      /|\\
+ |      
+ |          
+_|_
+''', '''
+  _______
+ |/      |
+ |       O
+ |      /|
+ |      
+ |          
+_|_
+''', '''
+  _______
+ |/      |
+ |       O
+ |       |
+ |      
+ |          
+_|_
+''', '''
+  _______
+ |/      |
+ |       O
+ |       
+ |     
+ |          
+_|_
+''', '''
+  _______
+ |/      |
+ |      
+ |      
+ |      
+ |          
+_|_
+''']
+
+vidas = 6
+
+palavra_escolhida = r.choice(word_list)
+print(palavra_escolhida)
+
+placeholder = ''
+contagem = len(palavra_escolhida)
+for posicao in range(contagem):
+    placeholder += '-'
+
+print(placeholder)
+
+game_over = False
+corrent_letter = []
+
+while not game_over:
+
+    adivinha = input('Adivinhe um letra: ').lower()
+
+    display = ''
+
+    for letra in palavra_escolhida:
+        if letra == adivinha:
+            display += letra
+            corrent_letter.append(letra)
+            
+        elif letra in corrent_letter:
+            display += letra
+
+        else:
+            display += '_'
+
+    print(display)
+
+    if adivinha not in palavra_escolhida:
+        vidas -= 1
+        if vidas == 0:
+            game_over = True
+            print('Você perdeu!')
+
+
+    if '_' not in display:
+        game_over = True
+        print('Você venceu!')
+
+    print(estagios[vidas])
